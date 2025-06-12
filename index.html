@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Satya Akhil Galla - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .section-title {
+            @apply text-3xl font-bold text-gray-800 mb-12 text-center;
+        }
+        .card {
+            @apply bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300;
+        }
+        .tag {
+            @apply bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #e5e7eb;
+        }
+        .timeline-item {
+            position: relative;
+            width: 50%;
+            padding: 20px 40px;
+            box-sizing: border-box;
+        }
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            padding-right: 20px;
+            text-align: right;
+        }
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            padding-left: 60px;
+            text-align: left;
+        }
+         .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+         .timeline-dot {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: white;
+            border: 4px solid #4f46e5;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -10px;
+        }
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -10px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-700">
+
+    <!-- Header -->
+    <header class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-gray-800">Satya Akhil Galla</a>
+            <div class="hidden md:flex space-x-6 items-center">
+                <a href="#about" class="text-gray-600 hover:text-blue-600 transition-colors">About</a>
+                <a href="#experience" class="text-gray-600 hover:text-blue-600 transition-colors">Experience</a>
+                <a href="#projects" class="text-gray-600 hover:text-blue-600 transition-colors">Projects</a>
+                <a href="#publications" class="text-gray-600 hover:text-blue-600 transition-colors">Publications</a>
+                <a href="#skills" class="text-gray-600 hover:text-blue-600 transition-colors">Skills</a>
+                <a href="#contact" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors">Contact</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-gray-600 hover:bg-gray-100">
+                <i data-lucide="menu"></i>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-4 pb-4">
+            <a href="#about" class="block py-2 text-gray-600 hover:text-blue-600">About</a>
+            <a href="#experience" class="block py-2 text-gray-600 hover:text-blue-600">Experience</a>
+            <a href="#projects" class="block py-2 text-gray-600 hover:text-blue-600">Projects</a>
+            <a href="#publications" class="block py-2 text-gray-600 hover:text-blue-600">Publications</a>
+            <a href="#skills" class="block py-2 text-gray-600 hover:text-blue-600">Skills</a>
+            <a href="#contact" class="block py-2 text-gray-600 hover:text-blue-600">Contact</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-16">
+        <!-- Hero Section -->
+        <section id="about" class="text-center min-h-[60vh] flex flex-col items-center justify-center">
+            <h1 class="text-5xl md:text-6xl font-extrabold text-gray-900 mb-4">Satya Akhil Galla</h1>
+            <p class="text-xl md:text-2xl text-blue-600 font-medium mb-6">M.S. in Artificial Intelligence Student at Boston University</p>
+            <p class="max-w-3xl mx-auto text-lg text-gray-600 mb-8">
+                Aspiring AI researcher with a passion for developing and applying cutting-edge deep learning models to solve real-world challenges, particularly in satellite imagery analysis and multimodal reasoning.
+            </p>
+            <div class="flex space-x-4">
+                <a href="https://github.com/satyaakhilgalla/satyaakhilgalla.github.io/raw/main/Satya_Galla_Resume_4.pdf" target="_blank" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-transform transform hover:scale-105 shadow-lg">View Resume</a>
+                <a href="#contact" class="bg-gray-200 text-gray-800 px-6 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-transform transform hover:scale-105 shadow-lg">Get In Touch</a>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="py-20">
+            <h2 class="section-title">Work Experience</h2>
+            <div class="relative max-w-4xl mx-auto">
+                <div class="timeline">
+                    <!-- Aaizel -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content text-left">
+                            <h3 class="text-xl font-bold">Deep Learning Intern</h3>
+                            <p class="text-md font-medium text-blue-600">Aaizel International Tech Pvt Ltd</p>
+                            <p class="text-sm text-gray-500 mb-2">Feb 2024 - May 2024</p>
+                            <ul class="list-disc list-inside text-gray-600 space-y-1">
+                                <li>Built a prototype for scene graph generation on remote sensing imagery using the ReLTR model.</li>
+                                <li>Deployed the system via Gradio for visualizing semantic relationships in satellite inputs.</li>
+                            </ul>
+                        </div>
+                    </div>
+                     <!-- Terrafic Inc -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3 class="text-xl font-bold">Machine Learning Research Intern</h3>
+                            <p class="text-md font-medium text-blue-600">Terrafic Inc</p>
+                            <p class="text-sm text-gray-500 mb-2">June 2023 – Nov 2023</p>
+                             <ul class="list-disc list-inside text-gray-600 space-y-1">
+                                <li>Adapted SOTA models for super-resolution of satellite imagery.</li>
+                                <li>Fine-tuned semantic segmentation models for detecting maritime and urban structures.</li>
+                            </ul>
+                        </div>
+                    </div>
+                     <!-- ISRO -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content text-left">
+                            <h3 class="text-xl font-bold">Machine Learning Research Intern</h3>
+                            <p class="text-md font-medium text-blue-600">Indian Space Research Organization (ISRO)</p>
+                            <p class="text-sm text-gray-500 mb-2">Dec 2022 - May 2023</p>
+                            <ul class="list-disc list-inside text-gray-600 space-y-1">
+                                <li>Implemented GCNs from scratch on Chandrayaan-2 hyperspectral data.</li>
+                                <li>Evaluated graph construction strategies for spectral-spatial classification.</li>
+                            </ul>
+                        </div>
+                    </div>
+                     <!-- SAMI Lab -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3 class="text-xl font-bold">Undergraduate Researcher</h3>
+                            <p class="text-md font-medium text-blue-600">SAMI Lab - IIIT Sri City</p>
+                            <p class="text-sm text-gray-500 mb-2">Aug 2022 - May 2024</p>
+                            <ul class="list-disc list-inside text-gray-600 space-y-1">
+                                <li>Conducted research on graph-based models for hyperspectral image analysis.</li>
+                                <li>Published results in IEEE WHISPERS 2023 and presented at NASA NESF 2023.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 bg-gray-100 -mx-6 px-6">
+            <h2 class="section-title">Projects</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <div class="card">
+                    <h3 class="text-xl font-bold mb-2">Text-to-Music Generation with Transformers and Diffusion Models</h3>
+                    <p class="text-gray-600 mb-4">Designed and evaluated hybrid pipelines combining MusicGen and AudioLDM for melody-conditioned text-to-music generation, achieving strong semantic alignment and audio fidelity.</p>
+                    <div class="flex flex-wrap mb-4"><span class="tag">PyTorch</span><span class="tag">Hugging Face</span></div>
+                    <a href="#" class="font-semibold text-blue-600 hover:underline">View on GitHub &rarr;</a>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-bold mb-2">Implementation of LRCN for VQA</h3>
+                    <p class="text-gray-600 mb-4">Reproduced and evaluated Layer-Residual Co-Attention Networks with encoder-decoder and co-stacking variants on CLEVR and VQA v2 datasets.</p>
+                     <div class="flex flex-wrap mb-4"><span class="tag">PyTorch</span></div>
+                    <a href="#" class="font-semibold text-blue-600 hover:underline">View on GitHub &rarr;</a>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-bold mb-2">Multimodal Skin Cancer Detection</h3>
+                    <p class="text-gray-600 mb-4">Tackled extreme data imbalance using SMOTE-ENN and built a fused model with XGBoost, CNNs (EfficientNet, VGG19) and engineered tabular features, achieving 96 AUC.</p>
+                     <div class="flex flex-wrap mb-4"><span class="tag">PyTorch</span><span class="tag">TensorFlow</span><span class="tag">Scikit-learn</span></div>
+                    <a href="#" class="font-semibold text-blue-600 hover:underline">View on GitHub &rarr;</a>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-bold mb-2">Reducing Hallucinations in Medical LLMs using RAG</h3>
+                    <p class="text-gray-600 mb-4">Built a RAG pipeline using LLaMA-3, FAISS, and LangChain to generate fact-grounded medical responses, improving sentence-level alignment by 38%.</p>
+                    <div class="flex flex-wrap mb-4"><span class="tag">LLaMa</span><span class="tag">FAISS</span><span class="tag">LangChain</span></div>
+                    <a href="#" class="font-semibold text-blue-600 hover:underline">View on GitHub &rarr;</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Publications Section -->
+        <section id="publications" class="py-20">
+            <h2 class="section-title">Publications</h2>
+            <div class="max-w-4xl mx-auto space-y-8">
+                <div class="card !shadow-none !p-0">
+                    <h3 class="text-lg font-bold">Efficient Graph Formulation and Latent Space Integration for Lunar Hyperspectral Image Classification</h3>
+                    <p class="text-sm text-gray-500">IEEE WHISPERS 2023, Athens, Greece</p>
+                    <a href="#" class="text-blue-600 hover:underline text-sm">View Publication &rarr;</a>
+                </div>
+                 <div class="card !shadow-none !p-0">
+                    <h3 class="text-lg font-bold">Enhancing Hyperspectral Classification through Graph Convolutional Networks with Adaptive Graph Construction</h3>
+                    <p class="text-sm text-gray-500">NASA Exploration Science Forum 2023, Maryland, USA</p>
+                    <a href="#" class="text-blue-600 hover:underline text-sm">View Poster &rarr;</a>
+                </div>
+                 <div class="card !shadow-none !p-0">
+                    <h3 class="text-lg font-bold">Spectral Unmixing Using Shape-driven Blind Deconvolution in Convolutional Autoencoder</h3>
+                    <p class="text-sm text-gray-500">IEEE WHISPERS 2023, Athens, Greece</p>
+                    <a href="#" class="text-blue-600 hover:underline text-sm">View Publication &rarr;</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 bg-gray-100 -mx-6 px-6">
+            <h2 class="section-title">Skills</h2>
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="mb-6">
+                    <h3 class="text-lg font-semibold mb-3 text-gray-700">Frameworks</h3>
+                    <div class="flex justify-center flex-wrap gap-2">
+                        <span class="tag !bg-gray-200 !text-gray-800">PyTorch</span>
+                        <span class="tag !bg-gray-200 !text-gray-800">TensorFlow</span>
+                        <span class="tag !bg-gray-200 !text-gray-800">Keras</span>
+                        <span class="tag !bg-gray-200 !text-gray-800">Scikit-learn</span>
+                        <span class="tag !bg-gray-200 !text-gray-800">LangChain</span>
+                    </div>
+                </div>
+                <div class="mb-6">
+                    <h3 class="text-lg font-semibold mb-3 text-gray-700">Languages</h3>
+                     <div class="flex justify-center flex-wrap gap-2">
+                        <span class="tag !bg-gray-200 !text-gray-800">Python</span>
+                        <span class="tag !bg-gray-200 !text-gray-800">C++</span>
+                        <span class="tag !bg-gray-200 !text-gray-800">SQL</span>
+                        <span class="tag !bg-gray-200 !text-gray-800">JavaScript</span>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-3 text-gray-700">Tools & Libraries</h3>
+                     <div class="flex justify-center flex-wrap gap-2">
+                        <span class="tag !bg-gray-200 !text-gray-800">Git</span>
+                        <span class="tag !bg-gray-200 !text-gray-800">FAISS</span>
+                        <span class="tag !bg-gray-200 !text-gray-800">Hugging Face</span>
+                        <span class="tag !bg-gray-200 !text-gray-800">OpenCV</span>
+                        <span class="tag !bg-gray-200 !text-gray-800">Bash</span>
+                        <span class="tag !bg-gray-200 !text-gray-800">NumPy</span>
+                        <span class="tag !bg-gray-200 !text-gray-800">Pandas</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 text-center">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="max-w-2xl mx-auto text-lg text-gray-600 mb-8">
+                I'm always open to discussing new projects, research collaborations, or opportunities. Feel free to reach out!
+            </p>
+            <a href="mailto:akhilg@bu.edu" class="inline-block bg-blue-600 text-white text-lg px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-transform transform hover:scale-105 shadow-lg mb-8">
+                akhilg@bu.edu
+            </a>
+            <div class="flex justify-center space-x-6">
+                <a href="#" class="text-gray-500 hover:text-blue-600">
+                    <i data-lucide="linkedin" class="w-8 h-8"></i>
+                </a>
+                 <a href="#" class="text-gray-500 hover:text-blue-600">
+                     <i data-lucide="github" class="w-8 h-8"></i>
+                </a>
+                 <a href="#" class="text-gray-500 hover:text-blue-600">
+                     <i data-lucide="graduation-cap" class="w-8 h-8"></i>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-800 text-white text-center py-6">
+        <p>&copy; 2024 Satya Akhil Galla. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
