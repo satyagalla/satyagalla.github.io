@@ -15,16 +15,18 @@
             @apply text-3xl font-bold text-gray-800 mb-12 text-center;
         }
         .card {
-            @apply bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300;
+            @apply bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col;
+        }
+        .card-content {
+            @apply flex-grow;
         }
         .tag {
-            @apply bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full;
+            @apply bg-blue-100 text-blue-800 text-xs font-semibold mr-2 mb-2 px-2.5 py-0.5 rounded-full inline-block;
         }
         .timeline::before {
             content: '';
             position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
+            left: 1.5rem;
             top: 0;
             bottom: 0;
             width: 2px;
@@ -32,44 +34,23 @@
         }
         .timeline-item {
             position: relative;
-            width: 50%;
-            padding: 20px 40px;
-            box-sizing: border-box;
+            padding-left: 4rem; /* Increased padding */
+            padding-bottom: 2rem;
         }
-        .timeline-item:nth-child(odd) {
-            left: 0;
-            padding-right: 20px;
-            text-align: right;
+        .timeline-item:last-child {
+            padding-bottom: 0;
         }
-        .timeline-item:nth-child(even) {
-            left: 50%;
-            padding-left: 60px;
-            text-align: left;
-        }
-         .timeline-content {
-            padding: 20px 30px;
-            background-color: white;
-            position: relative;
-            border-radius: 6px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        }
-         .timeline-dot {
+        .timeline-dot {
             content: '';
             position: absolute;
+            left: calc(1.5rem - 9px); /* Center on the line */
             width: 20px;
             height: 20px;
             border-radius: 50%;
             background-color: white;
             border: 4px solid #4f46e5;
-            top: 50%;
-            transform: translateY(-50%);
+            top: 5px;
             z-index: 1;
-        }
-        .timeline-item:nth-child(odd) .timeline-dot {
-            right: -10px;
-        }
-        .timeline-item:nth-child(even) .timeline-dot {
-            left: -10px;
         }
     </style>
 </head>
@@ -108,10 +89,10 @@
             <h1 class="text-5xl md:text-6xl font-extrabold text-gray-900 mb-4">Satya Akhil Galla</h1>
             <p class="text-xl md:text-2xl text-blue-600 font-medium mb-6">M.S. in Artificial Intelligence Student at Boston University</p>
             <p class="max-w-3xl mx-auto text-lg text-gray-600 mb-8">
-                Aspiring AI researcher with a passion for developing and applying cutting-edge deep learning models to solve real-world challenges, particularly in satellite imagery analysis and multimodal reasoning.
+                AI researcher and developer focused on creating robust, high-impact deep learning solutions. My work spans from enhancing satellite imagery with graph neural networks to minimizing hallucinations in medical LLMs.
             </p>
-            <div class="flex space-x-4">
-                <a href="https://github.com/satyaakhilgalla/satyaakhilgalla.github.io/raw/main/Satya_Galla_Resume_4.pdf" target="_blank" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-transform transform hover:scale-105 shadow-lg">View Resume</a>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="https://satyagalla.github.io/Satya_Galla_Resume.pdf" target="_blank" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-transform transform hover:scale-105 shadow-lg">View Resume</a>
                 <a href="#contact" class="bg-gray-200 text-gray-800 px-6 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-transform transform hover:scale-105 shadow-lg">Get In Touch</a>
             </div>
         </section>
@@ -121,57 +102,40 @@
             <h2 class="section-title">Work Experience</h2>
             <div class="relative max-w-4xl mx-auto">
                 <div class="timeline">
-                    <!-- Aaizel -->
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
-                        <div class="timeline-content text-left">
-                            <h3 class="text-xl font-bold">Deep Learning Intern</h3>
-                            <p class="text-md font-medium text-blue-600">Aaizel International Tech Pvt Ltd</p>
-                            <p class="text-sm text-gray-500 mb-2">Feb 2024 - May 2024</p>
-                            <ul class="list-disc list-inside text-gray-600 space-y-1">
-                                <li>Built a prototype for scene graph generation on remote sensing imagery using the ReLTR model.</li>
-                                <li>Deployed the system via Gradio for visualizing semantic relationships in satellite inputs.</li>
-                            </ul>
-                        </div>
+                        <h3 class="text-xl font-bold">Deep Learning Intern</h3>
+                        <p class="text-md font-medium text-blue-600">Aaizel International Tech Pvt Ltd <span class="text-sm text-gray-500 font-normal">| Feb 2024 - May 2024</span></p>
+                        <ul class="list-disc list-inside text-gray-600 mt-2 space-y-1">
+                            <li>Built the company’s first scene-graph pipeline for IR + RGB satellite imagery: adapted RelTR to identify objects and relations.</li>
+                            <li>Deployed a Gradio web app that lets analysts upload a satellite tile and instantly view its semantic graph, accelerating remote-sensing intelligence workflows.</li>
+                        </ul>
                     </div>
-                     <!-- Terrafic Inc -->
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <h3 class="text-xl font-bold">Machine Learning Research Intern</h3>
-                            <p class="text-md font-medium text-blue-600">Terrafic Inc</p>
-                            <p class="text-sm text-gray-500 mb-2">June 2023 – Nov 2023</p>
-                             <ul class="list-disc list-inside text-gray-600 space-y-1">
-                                <li>Adapted SOTA models for super-resolution of satellite imagery.</li>
-                                <li>Fine-tuned semantic segmentation models for detecting maritime and urban structures.</li>
-                            </ul>
-                        </div>
+                        <h3 class="text-xl font-bold">Machine Learning Research Intern</h3>
+                        <p class="text-md font-medium text-blue-600">Terrafic Inc <span class="text-sm text-gray-500 font-normal">| June 2023 - Nov 2023</span></p>
+                        <ul class="list-disc list-inside text-gray-600 mt-2 space-y-1">
+                            <li>Built the startup’s first satellite-imagery ML pipeline; implemented 4× / 6× super-resolution for a defense-mapping demo.</li>
+                            <li>Added SAM-based segmentation of maritime and urban features, delivering a live geospatial proof-of-concept for founders.</li>
+                        </ul>
                     </div>
-                     <!-- ISRO -->
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
-                        <div class="timeline-content text-left">
-                            <h3 class="text-xl font-bold">Machine Learning Research Intern</h3>
-                            <p class="text-md font-medium text-blue-600">Indian Space Research Organization (ISRO)</p>
-                            <p class="text-sm text-gray-500 mb-2">Dec 2022 - May 2023</p>
-                            <ul class="list-disc list-inside text-gray-600 space-y-1">
-                                <li>Implemented GCNs from scratch on Chandrayaan-2 hyperspectral data.</li>
-                                <li>Evaluated graph construction strategies for spectral-spatial classification.</li>
-                            </ul>
-                        </div>
+                        <h3 class="text-xl font-bold">Machine Learning Research Intern</h3>
+                        <p class="text-md font-medium text-blue-600">Indian Space Research Organisation (ISRO) <span class="text-sm text-gray-500 font-normal">| Dec 2022 - May 2023</span></p>
+                        <ul class="list-disc list-inside text-gray-600 mt-2 space-y-1">
+                            <li>Built a Graph-Convolution pipeline for Chandrayaan-1/2 hyperspectral data and research on adaptive graph strategies.</li>
+                        </ul>
                     </div>
-                     <!-- SAMI Lab -->
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <h3 class="text-xl font-bold">Undergraduate Researcher</h3>
-                            <p class="text-md font-medium text-blue-600">SAMI Lab - IIIT Sri City</p>
-                            <p class="text-sm text-gray-500 mb-2">Aug 2022 - May 2024</p>
-                            <ul class="list-disc list-inside text-gray-600 space-y-1">
-                                <li>Conducted research on graph-based models for hyperspectral image analysis.</li>
-                                <li>Published results in IEEE WHISPERS 2023 and presented at NASA NESF 2023.</li>
-                            </ul>
-                        </div>
+                        <h3 class="text-xl font-bold">Undergraduate Researcher</h3>
+                        <p class="text-md font-medium text-blue-600">SAMI Lab - IIIT Sri City <span class="text-sm text-gray-500 font-normal">| Aug 2022 - May 2024</span></p>
+                        <ul class="list-disc list-inside text-gray-600 mt-2 space-y-1">
+                            <li>Developed graph-based models that raised lunar hyperspectral-image classification to 98% accuracy.</li>
+                            <li>Co-authored an IEEE WHISPERS 2023 paper and NASA NESF 2023 poster; work funded by ISRO.</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -182,28 +146,48 @@
             <h2 class="section-title">Projects</h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
                 <div class="card">
-                    <h3 class="text-xl font-bold mb-2">Text-to-Music Generation with Transformers and Diffusion Models</h3>
-                    <p class="text-gray-600 mb-4">Designed and evaluated hybrid pipelines combining MusicGen and AudioLDM for melody-conditioned text-to-music generation, achieving strong semantic alignment and audio fidelity.</p>
-                    <div class="flex flex-wrap mb-4"><span class="tag">PyTorch</span><span class="tag">Hugging Face</span></div>
-                    <a href="#" class="font-semibold text-blue-600 hover:underline">View on GitHub &rarr;</a>
+                    <div class="card-content">
+                        <h3 class="text-xl font-bold mb-2">Text-to-Music Generation with Transformers & Diffusion Models</h3>
+                        <div class="flex flex-wrap mt-2 mb-4"><span class="tag">PyTorch</span><span class="tag">HuggingFace</span></div>
+                        <ul class="list-disc list-inside text-gray-600 space-y-2">
+                           <li>First comparative study of transformer-first vs. diffusion-first cascades; showed MusicGen boosts semantic alignment while AudioLDM enriches audio detail.</li>
+                           <li>The best AudioLDM→MusicGen cascade kept semantic match (CLAP <b class="text-gray-800">0.35</b>) and cut audio distance (FAD 6.68 → <b class="text-gray-800">6.55</b>), outperforming both standalone models.</li>
+                        </ul>
+                    </div>
+                    <a href="https://github.com/satyagalla/AlphaBeat" target="_blank" class="font-semibold text-blue-600 hover:underline mt-4 self-start">View on GitHub &rarr;</a>
                 </div>
                 <div class="card">
-                    <h3 class="text-xl font-bold mb-2">Implementation of LRCN for VQA</h3>
-                    <p class="text-gray-600 mb-4">Reproduced and evaluated Layer-Residual Co-Attention Networks with encoder-decoder and co-stacking variants on CLEVR and VQA v2 datasets.</p>
-                     <div class="flex flex-wrap mb-4"><span class="tag">PyTorch</span></div>
-                    <a href="#" class="font-semibold text-blue-600 hover:underline">View on GitHub &rarr;</a>
+                     <div class="card-content">
+                        <h3 class="text-xl font-bold mb-2">Layer-Residual Co-Attention Networks (LRCN) for VQA</h3>
+                         <div class="flex flex-wrap mt-2 mb-4"><span class="tag">PyTorch</span></div>
+                         <ul class="list-disc list-inside text-gray-600 space-y-2">
+                            <li>Open-sourced the first full PyTorch replication of all three LRCN variants and added a cross-attention visualisation tool.</li>
+                            <li>Matched the paper’s VQA-v2 result and extending to CLEVR in upcoming work.</li>
+                         </ul>
+                    </div>
+                    <a href="https://github.com/satyagalla/Layer-Residual-Co-attention-Networks-for-VQA-LRCN" target="_blank" class="font-semibold text-blue-600 hover:underline mt-4 self-start">View on GitHub &rarr;</a>
                 </div>
                 <div class="card">
-                    <h3 class="text-xl font-bold mb-2">Multimodal Skin Cancer Detection</h3>
-                    <p class="text-gray-600 mb-4">Tackled extreme data imbalance using SMOTE-ENN and built a fused model with XGBoost, CNNs (EfficientNet, VGG19) and engineered tabular features, achieving 96 AUC.</p>
-                     <div class="flex flex-wrap mb-4"><span class="tag">PyTorch</span><span class="tag">TensorFlow</span><span class="tag">Scikit-learn</span></div>
-                    <a href="#" class="font-semibold text-blue-600 hover:underline">View on GitHub &rarr;</a>
+                     <div class="card-content">
+                        <h3 class="text-xl font-bold mb-2">Multimodal Skin Cancer Detection</h3>
+                        <div class="flex flex-wrap mt-2 mb-4"><span class="tag">PyTorch</span><span class="tag">TensorFlow</span></div>
+                         <ul class="list-disc list-inside text-gray-600 space-y-2">
+                            <li>Handled extreme class imbalance (0.1%) with resampling and weighted loss; trained image and tabular models separately.</li>
+                            <li>Fused both views in a voting ensemble raising ROC-AUC to <b class="text-gray-800">0.96</b>—15 pts higher than the best single-modal baseline.</li>
+                         </ul>
+                    </div>
+                    <a href="https://github.com/satyagalla/Skin-Cancer-Detection" target="_blank" class="font-semibold text-blue-600 hover:underline mt-4 self-start">View on GitHub &rarr;</a>
                 </div>
                 <div class="card">
-                    <h3 class="text-xl font-bold mb-2">Reducing Hallucinations in Medical LLMs using RAG</h3>
-                    <p class="text-gray-600 mb-4">Built a RAG pipeline using LLaMA-3, FAISS, and LangChain to generate fact-grounded medical responses, improving sentence-level alignment by 38%.</p>
-                    <div class="flex flex-wrap mb-4"><span class="tag">LLaMa</span><span class="tag">FAISS</span><span class="tag">LangChain</span></div>
-                    <a href="#" class="font-semibold text-blue-600 hover:underline">View on GitHub &rarr;</a>
+                     <div class="card-content">
+                        <h3 class="text-xl font-bold mb-2">Minimizing Hallucination in Medical LLMs</h3>
+                        <div class="flex flex-wrap mt-2 mb-4"><span class="tag">LLaMa</span><span class="tag">LangChain</span><span class="tag">FAISS</span></div>
+                         <ul class="list-disc list-inside text-gray-600 space-y-2">
+                            <li>Built a medical RAG stack indexing 207K verified Q–A pairs to ground responses and curb hallucinations.</li>
+                            <li>Raised SBERT sentence similarity from 0.63 to <b class="text-gray-800">0.87</b> (+38%) over vanilla LLaMA-3, delivering more accurate patient-care answers.</li>
+                         </ul>
+                    </div>
+                    <a href="https://github.com/satyagalla/Minimizing-Hallucination-in-Medical-LLMs" target="_blank" class="font-semibold text-blue-600 hover:underline mt-4 self-start">View on GitHub &rarr;</a>
                 </div>
             </div>
         </section>
@@ -211,21 +195,28 @@
         <!-- Publications Section -->
         <section id="publications" class="py-20">
             <h2 class="section-title">Publications</h2>
-            <div class="max-w-4xl mx-auto space-y-8">
-                <div class="card !shadow-none !p-0">
+            <div class="max-w-4xl mx-auto space-y-10">
+                <div class="p-4 rounded-lg">
                     <h3 class="text-lg font-bold">Efficient Graph Formulation and Latent Space Integration for Lunar Hyperspectral Image Classification</h3>
-                    <p class="text-sm text-gray-500">IEEE WHISPERS 2023, Athens, Greece</p>
-                    <a href="#" class="text-blue-600 hover:underline text-sm">View Publication &rarr;</a>
+                    <p class="text-sm text-gray-500 italic mb-2">IEEE WHISPERS 2023, Athens, Greece | <a href="https://ieeexplore.ieee.org/abstract/document/10431156" target="_blank" class="text-blue-600 hover:underline">Publication</a></p>
+                    <ul class="list-disc list-inside text-gray-600 space-y-1 mt-2">
+                        <li>First study on Chandrayaan-1/2 data: a non-linear spectral–spatial graph lifted GCN accuracy to <b class="text-gray-800">97%</b>.</li>
+                        <li>Integrated autoencoder latents with the best graph, pushing accuracy to <b class="text-gray-800">98.4%</b> for an ISRO-funded mineral-mapping pipeline.</li>
+                    </ul>
                 </div>
-                 <div class="card !shadow-none !p-0">
+                 <div class="p-4 rounded-lg">
                     <h3 class="text-lg font-bold">Enhancing Hyperspectral Classification through Graph Convolutional Networks with Adaptive Graph Construction</h3>
-                    <p class="text-sm text-gray-500">NASA Exploration Science Forum 2023, Maryland, USA</p>
-                    <a href="#" class="text-blue-600 hover:underline text-sm">View Poster &rarr;</a>
+                    <p class="text-sm text-gray-500 italic mb-2">NASA Exploration Science Forum 2023, Maryland, USA | <a href="https://sservi.nasa.gov/nesf2023/posters" target="_blank" class="text-blue-600 hover:underline">Poster</a></p>
+                     <ul class="list-disc list-inside text-gray-600 space-y-1 mt-2">
+                        <li>First work on Chandrayaan-2 IIRS data to compare six graph-construction schemes for GCNs, boosting accuracy from 91% to <b class="text-gray-800">97%</b>.</li>
+                     </ul>
                 </div>
-                 <div class="card !shadow-none !p-0">
+                 <div class="p-4 rounded-lg">
                     <h3 class="text-lg font-bold">Spectral Unmixing Using Shape-driven Blind Deconvolution in Convolutional Autoencoder</h3>
-                    <p class="text-sm text-gray-500">IEEE WHISPERS 2023, Athens, Greece</p>
-                    <a href="#" class="text-blue-600 hover:underline text-sm">View Publication &rarr;</a>
+                    <p class="text-sm text-gray-500 italic mb-2">IEEE WHISPERS 2023, Athens, Greece | <a href="https://ieeexplore.ieee.org/abstract/document/10430998" target="_blank" class="text-blue-600 hover:underline">Publication</a></p>
+                    <ul class="list-disc list-inside text-gray-600 space-y-1 mt-2">
+                        <li>First unmixing model to embed shape-based similarity in a CAE loss, cutting abundance-RMSE by <b class="text-gray-800">15%</b> vs. baselines.</li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -235,34 +226,34 @@
             <h2 class="section-title">Skills</h2>
             <div class="max-w-4xl mx-auto text-center">
                 <div class="mb-6">
-                    <h3 class="text-lg font-semibold mb-3 text-gray-700">Frameworks</h3>
+                    <h3 class="text-lg font-semibold mb-4 text-gray-700">Frameworks</h3>
                     <div class="flex justify-center flex-wrap gap-2">
-                        <span class="tag !bg-gray-200 !text-gray-800">PyTorch</span>
-                        <span class="tag !bg-gray-200 !text-gray-800">TensorFlow</span>
-                        <span class="tag !bg-gray-200 !text-gray-800">Keras</span>
-                        <span class="tag !bg-gray-200 !text-gray-800">Scikit-learn</span>
-                        <span class="tag !bg-gray-200 !text-gray-800">LangChain</span>
+                        <span class="tag !text-sm !bg-gray-200 !text-gray-800">PyTorch</span>
+                        <span class="tag !text-sm !bg-gray-200 !text-gray-800">TensorFlow</span>
+                        <span class="tag !text-sm !bg-gray-200 !text-gray-800">Keras</span>
+                        <span class="tag !text-sm !bg-gray-200 !text-gray-800">Scikit-learn</span>
+                        <span class="tag !text-sm !bg-gray-200 !text-gray-800">LangChain</span>
                     </div>
                 </div>
                 <div class="mb-6">
-                    <h3 class="text-lg font-semibold mb-3 text-gray-700">Languages</h3>
+                    <h3 class="text-lg font-semibold mb-4 text-gray-700">Languages</h3>
                      <div class="flex justify-center flex-wrap gap-2">
-                        <span class="tag !bg-gray-200 !text-gray-800">Python</span>
-                        <span class="tag !bg-gray-200 !text-gray-800">C++</span>
-                        <span class="tag !bg-gray-200 !text-gray-800">SQL</span>
-                        <span class="tag !bg-gray-200 !text-gray-800">JavaScript</span>
+                        <span class="tag !text-sm !bg-gray-200 !text-gray-800">Python</span>
+                        <span class="tag !text-sm !bg-gray-200 !text-gray-800">C++</span>
+                        <span class="tag !text-sm !bg-gray-200 !text-gray-800">SQL</span>
+                        <span class="tag !text-sm !bg-gray-200 !text-gray-800">JavaScript</span>
                     </div>
                 </div>
                 <div>
-                    <h3 class="text-lg font-semibold mb-3 text-gray-700">Tools & Libraries</h3>
+                    <h3 class="text-lg font-semibold mb-4 text-gray-700">Tools & Libraries</h3>
                      <div class="flex justify-center flex-wrap gap-2">
-                        <span class="tag !bg-gray-200 !text-gray-800">Git</span>
-                        <span class="tag !bg-gray-200 !text-gray-800">FAISS</span>
-                        <span class="tag !bg-gray-200 !text-gray-800">Hugging Face</span>
-                        <span class="tag !bg-gray-200 !text-gray-800">OpenCV</span>
-                        <span class="tag !bg-gray-200 !text-gray-800">Bash</span>
-                        <span class="tag !bg-gray-200 !text-gray-800">NumPy</span>
-                        <span class="tag !bg-gray-200 !text-gray-800">Pandas</span>
+                        <span class="tag !text-sm !bg-gray-200 !text-gray-800">Git</span>
+                        <span class="tag !text-sm !bg-gray-200 !text-gray-800">FAISS</span>
+                        <span class="tag !text-sm !bg-gray-200 !text-gray-800">Hugging Face</span>
+                        <span class="tag !text-sm !bg-gray-200 !text-gray-800">OpenCV</span>
+                        <span class="tag !text-sm !bg-gray-200 !text-gray-800">Bash</span>
+                        <span class="tag !text-sm !bg-gray-200 !text-gray-800">NumPy</span>
+                        <span class="tag !text-sm !bg-gray-200 !text-gray-800">Pandas</span>
                     </div>
                 </div>
             </div>
@@ -272,19 +263,19 @@
         <section id="contact" class="py-20 text-center">
             <h2 class="section-title">Get In Touch</h2>
             <p class="max-w-2xl mx-auto text-lg text-gray-600 mb-8">
-                I'm always open to discussing new projects, research collaborations, or opportunities. Feel free to reach out!
+                I'm always open to discussing new projects, research collaborations, or exciting opportunities. Please feel free to reach out!
             </p>
             <a href="mailto:akhilg@bu.edu" class="inline-block bg-blue-600 text-white text-lg px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-transform transform hover:scale-105 shadow-lg mb-8">
                 akhilg@bu.edu
             </a>
             <div class="flex justify-center space-x-6">
-                <a href="#" class="text-gray-500 hover:text-blue-600">
+                <a href="https://www.linkedin.com/in/satya-galla" target="_blank" class="text-gray-500 hover:text-blue-600">
                     <i data-lucide="linkedin" class="w-8 h-8"></i>
                 </a>
-                 <a href="#" class="text-gray-500 hover:text-blue-600">
+                 <a href="https://github.com/satyagalla" target="_blank" class="text-gray-500 hover:text-blue-600">
                      <i data-lucide="github" class="w-8 h-8"></i>
                 </a>
-                 <a href="#" class="text-gray-500 hover:text-blue-600">
+                 <a href="https://scholar.google.com/citations?user=gLqht5wAAAAJ&hl=en" target="_blank" class="text-gray-500 hover:text-blue-600">
                      <i data-lucide="graduation-cap" class="w-8 h-8"></i>
                 </a>
             </div>
@@ -293,7 +284,7 @@
     </main>
 
     <footer class="bg-gray-800 text-white text-center py-6">
-        <p>&copy; 2024 Satya Akhil Galla. All Rights Reserved.</p>
+        <p>&copy; 2025 Satya Akhil Galla. All Rights Reserved.</p>
     </footer>
 
     <script>
