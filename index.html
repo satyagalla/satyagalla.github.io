@@ -8,49 +8,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        .section-title {
-            @apply text-3xl font-bold text-gray-800 mb-12 text-center;
-        }
-        .card {
-            @apply bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col h-full border border-gray-100;
-        }
-        .card-content {
-            @apply flex-grow;
-        }
-        .tag {
-            @apply bg-blue-50 text-blue-700 text-xs font-semibold mr-2 mb-2 px-2.5 py-1 rounded-md inline-block border border-blue-100;
-        }
+        body { font-family: 'Inter', sans-serif; }
+        .section-title { @apply text-3xl font-bold text-gray-800 mb-12 text-center; }
+        .card { @apply bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col h-full border border-gray-100; }
+        .card-content { @apply flex-grow; }
+        .tag { @apply bg-blue-50 text-blue-700 text-xs font-semibold mr-2 mb-2 px-2.5 py-1 rounded-md inline-block border border-blue-100; }
         .timeline::before {
-            content: '';
-            position: absolute;
-            left: 1.5rem;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background-color: #e5e7eb;
+            content: ''; position: absolute; left: 1.5rem; top: 0; bottom: 0; width: 2px; background-color: #e5e7eb;
         }
-        .timeline-item {
-            position: relative;
-            padding-left: 4rem;
-            padding-bottom: 3rem;
-        }
-        .timeline-item:last-child {
-            padding-bottom: 0;
-        }
+        .timeline-item { position: relative; padding-left: 4rem; padding-bottom: 3rem; }
+        .timeline-item:last-child { padding-bottom: 0; }
         .timeline-dot {
-            content: '';
-            position: absolute;
-            left: calc(1.5rem - 9px);
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background-color: white;
-            border: 4px solid #2563eb;
-            top: 5px;
-            z-index: 1;
+            content: ''; position: absolute; left: calc(1.5rem - 9px); width: 20px; height: 20px;
+            border-radius: 50%; background-color: white; border: 4px solid #2563eb; top: 5px; z-index: 1;
         }
     </style>
 </head>
@@ -85,13 +55,12 @@
         
         <section id="about" class="text-center min-h-[50vh] flex flex-col items-center justify-center py-16">
             <h1 class="text-5xl md:text-7xl font-extrabold text-gray-900 mb-6 tracking-tight">
-                AI Engineer & <br class="md:hidden" />Researcher
+                AI Engineer & <br class="md:hidden" />GenAI Architect
             </h1>
             <p class="text-xl md:text-2xl text-blue-600 font-medium mb-6">M.S. in Artificial Intelligence, Boston University</p>
             <p class="max-w-3xl mx-auto text-lg text-gray-600 mb-10 leading-relaxed">
-                Specializing in <strong>Generative AI</strong>, <strong>RAG Architectures</strong>, and <strong>Computer Vision</strong>. 
-                I build enterprise-grade systems—from minimizing hallucinations in medical LLMs to enhancing satellite imagery for ISRO. 
-                Published author in IEEE WHISPERS with a focus on graph neural networks and multimodal fusion.
+                Specializing in <strong>End-to-End Generative AI</strong>, from data engineering to cloud deployment. 
+                Expertise includes architecting scalable <strong>RAG systems on AWS</strong>, fine-tuning LLMs (Llama-3, Phi-3) using QLoRA, and engineering autonomous <strong>AI Agents</strong> for edge latency.
             </p>
             <div class="flex flex-wrap justify-center gap-4">
                 <a href="https://satyagalla.github.io/Satya_Galla_Resume.pdf" target="_blank" class="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transition-all transform hover:scale-105 shadow-lg flex items-center gap-2">
@@ -115,7 +84,7 @@
                         <p class="text-sm text-gray-500 italic mb-2">CS 365: Foundations of Data Science</p>
                         <ul class="list-disc list-inside text-gray-600 mt-2 space-y-1">
                             <li>Lead technical labs on Python optimization and statistical modeling, mentoring 50+ students.</li>
-                            <li>Facilitated weekly code reviews and debugging sessions to reinforce best practices in algorithmic implementation.</li>
+                            <li>Facilitated weekly code reviews to enforce production-standard coding styles and debugging techniques.</li>
                         </ul>
                     </div>
 
@@ -124,18 +93,18 @@
                         <h3 class="text-xl font-bold text-gray-900">Machine Learning Engineer Intern</h3>
                         <p class="text-md font-medium text-blue-600">Aaizel International Tech <span class="text-sm text-gray-500 font-normal ml-2">Feb 2024 - May 2024</span></p>
                         <ul class="list-disc list-inside text-gray-600 mt-2 space-y-1">
-                            <li>Created the domain's <strong>first remote sensing scene graph dataset</strong> and architected a multimodal fusion pipeline (IFCNN).</li>
-                            <li>Fine-tuned a <strong>RelTR Transformer</strong> for geospatial relationship extraction and deployed a Gradio interface for instant semantic visualization.</li>
+                            <li>Architected a <strong>multimodal fusion pipeline (IFCNN)</strong> merging IR+RGB satellite imagery.</li>
+                            <li>Fine-tuned a <strong>RelTR Transformer</strong> for geospatial relationship extraction, deploying the inference engine on <strong>Microsoft Azure</strong>.</li>
                         </ul>
                     </div>
 
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
-                        <h3 class="text-xl font-bold text-gray-900">Computer Vision Intern</h3>
+                        <h3 class="text-xl font-bold text-gray-900">Computer Vision Engineer</h3>
                         <p class="text-md font-medium text-blue-600">Terrafic Inc <span class="text-sm text-gray-500 font-normal ml-2">June 2023 - Nov 2023</span></p>
                         <ul class="list-disc list-inside text-gray-600 mt-2 space-y-1">
+                            <li>Integrated the <strong>Segment Anything Model (SAM)</strong> to automate maritime feature extraction, delivering a production-ready MVP.</li>
                             <li>Implemented Super-Resolution (SR) algorithms (4x/6x) to enhance object detection on low-resolution defense mapping data.</li>
-                            <li>Integrated <strong>Segment Anything Model (SAM)</strong> to automate maritime feature extraction, delivering a production-ready MVP.</li>
                         </ul>
                     </div>
 
@@ -145,7 +114,7 @@
                         <p class="text-md font-medium text-blue-600">ISRO (Indian Space Research Organization) <span class="text-sm text-gray-500 font-normal ml-2">Dec 2022 - May 2023</span></p>
                         <ul class="list-disc list-inside text-gray-600 mt-2 space-y-1">
                             <li>Authored <strong>IEEE WHISPERS 2023</strong> paper presenting the first hyperspectral classification framework for Chandrayaan-2 IIRS data.</li>
-                            <li>Engineered a <strong>Spectral-Spatial Non-Linearity</strong> graph formulation (Latent GCN), achieving <strong>90.1% accuracy</strong> on lunar benchmarks.</li>
+                            <li>Engineered a <strong>Latent Graph Convolutional Network (GCN)</strong> with Autoencoders, achieving <strong>90.1% accuracy</strong>.</li>
                         </ul>
                     </div>
                 </div>
@@ -159,18 +128,18 @@
                 <div class="card">
                     <div class="card-content">
                         <div class="flex justify-between items-start">
-                            <h3 class="text-xl font-bold mb-2 text-gray-900">Advanced Hybrid RAG for Healthcare</h3>
+                            <h3 class="text-xl font-bold mb-2 text-gray-900">Enterprise RAG for Healthcare</h3>
                             <a href="https://github.com/satyagalla/Minimizing-Hallucination-in-Medical-LLMs" target="_blank" class="text-gray-400 hover:text-blue-600"><i data-lucide="github" class="w-5 h-5"></i></a>
                         </div>
                         <div class="flex flex-wrap mt-2 mb-4">
-                            <span class="tag">Llama-3</span>
-                            <span class="tag">Hybrid Search</span>
-                            <span class="tag">Cross-Encoders</span>
+                            <span class="tag">Llama-3 (QLoRA)</span>
+                            <span class="tag">AWS EC2</span>
+                            <span class="tag">Docker</span>
                         </div>
                         <ul class="list-disc list-inside text-gray-600 space-y-2 text-sm">
-                            <li>Engineered an enterprise-grade <strong>Hybrid RAG pipeline</strong> combining Dense Vector Search with <strong>BM25</strong> to capture precise medical nomenclature.</li>
-                            <li>Implemented Cross-Encoder Re-ranking to strictly filter contexts.</li>
-                            <li>Achieved an <strong>87% SBERT alignment score</strong>, boosting semantic fidelity by 38% over the baseline.</li>
+                            <li>Architected a <strong>Hybrid RAG pipeline</strong> on <strong>AWS EC2</strong>, orchestrating ingestion for <strong>50k+ documents</strong> via LangChain.</li>
+                            <li>Engineered dual-retrieval (Dense + BM25) with Cross-Encoder Re-ranking to strictly filter medical contexts.</li>
+                            <li>Achieved an <strong>87% SBERT alignment score</strong> and deployed via FastAPI/Docker.</li>
                         </ul>
                     </div>
                 </div>
@@ -178,17 +147,18 @@
                 <div class="card">
                     <div class="card-content">
                         <div class="flex justify-between items-start">
-                            <h3 class="text-xl font-bold mb-2 text-gray-900">Cozy Companion (CoCo) Agent</h3>
+                            <h3 class="text-xl font-bold mb-2 text-gray-900">CoCo: Neuro-Symbolic Agent</h3>
                             <a href="https://github.com/satyagalla/CozyCompanion" target="_blank" class="text-gray-400 hover:text-blue-600"><i data-lucide="github" class="w-5 h-5"></i></a>
                         </div>
                         <div class="flex flex-wrap mt-2 mb-4">
-                            <span class="tag">Phi-3</span>
-                            <span class="tag">Neuro-Symbolic AI</span>
-                            <span class="tag">Godot</span>
+                            <span class="tag">Phi-3 (4-bit)</span>
+                            <span class="tag">Agentic AI</span>
+                            <span class="tag">TCP/IPC</span>
                         </div>
                         <ul class="list-disc list-inside text-gray-600 space-y-2 text-sm">
-                            <li>Engineered a <strong>Subsumption Architecture</strong> decoupling a 60Hz reactive loop from asynchronous Phi-3 inference via TCP sockets.</li>
-                            <li>Integrated a <strong>Leaky Integrate-and-Fire (LIF)</strong> model to estimate user flow state and modulate agent behavior.</li>
+                            <li>Developed a <strong>bio-mimetic agent architecture</strong> separating high-speed <strong>spinal reflexes</strong> (60Hz loop) from <strong>cortical reasoning</strong> (LLM).</li>
+                            <li>Achieved <strong>&lt;16ms UI latency</strong> by decoupling Phi-3 inference via asynchronous TCP sockets.</li>
+                            <li>Integrated a <strong>Leaky Integrate-and-Fire (LIF)</strong> spiking network to model emotional states.</li>
                         </ul>
                     </div>
                 </div>
@@ -201,12 +171,12 @@
                         </div>
                         <div class="flex flex-wrap mt-2 mb-4">
                             <span class="tag">PyTorch</span>
-                            <span class="tag">Medical Imaging</span>
                             <span class="tag">Ensemble</span>
+                            <span class="tag">SMOTE</span>
                         </div>
                         <ul class="list-disc list-inside text-gray-600 space-y-2 text-sm">
-                            <li>Tackled 0.1% class imbalance using synthetic oversampling and developed a voting ensemble fusing CNNs and tabular models.</li>
-                            <li>Achieved an <strong>ROC-AUC of 0.96</strong>, surpassing single-modal baselines by 15 points.</li>
+                            <li>Designed a Voting Ensemble fusing CNNs and tabular models for data with extreme <strong>0.1% class imbalance</strong>.</li>
+                            <li>Surpassed single-modal baselines by 15 points, achieving an <strong>ROC-AUC of 0.96</strong>.</li>
                         </ul>
                     </div>
                 </div>
@@ -214,35 +184,16 @@
                 <div class="card">
                     <div class="card-content">
                         <div class="flex justify-between items-start">
-                            <h3 class="text-xl font-bold mb-2 text-gray-900">Predictive Analytics for MBTA</h3>
-                            <a href="https://github.com/satyagalla/MBTA_Data_Analysis" target="_blank" class="text-gray-400 hover:text-blue-600"><i data-lucide="github" class="w-5 h-5"></i></a>
-                        </div>
-                        <div class="flex flex-wrap mt-2 mb-4">
-                            <span class="tag">XGBoost</span>
-                            <span class="tag">Business Intelligence</span>
-                            <span class="tag">GIS</span>
-                        </div>
-                        <ul class="list-disc list-inside text-gray-600 space-y-2 text-sm">
-                            <li>Aggregated 9 years of multi-modal data to train Reliability (XGBoost) and Ridership (Random Forest) models.</li>
-                            <li>Uncovered a system-wide <strong>33.35% post-pandemic ridership drop</strong> and identified critical service disparities.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-content">
-                        <div class="flex justify-between items-start">
-                            <h3 class="text-xl font-bold mb-2 text-gray-900">Generative Audio: Transformer vs. Diffusion</h3>
+                            <h3 class="text-xl font-bold mb-2 text-gray-900">Generative Audio: Transf. vs Diffusion</h3>
                             <a href="https://github.com/satyagalla/AlphaBeat/tree/main" target="_blank" class="text-gray-400 hover:text-blue-600"><i data-lucide="github" class="w-5 h-5"></i></a>
                         </div>
                         <div class="flex flex-wrap mt-2 mb-4">
                             <span class="tag">AudioLDM</span>
-                            <span class="tag">MusicGen</span>
-                            <span class="tag">HuggingFace</span>
+                            <span class="tag">Transformers</span>
                         </div>
                         <ul class="list-disc list-inside text-gray-600 space-y-2 text-sm">
-                            <li>Comparative evaluation of 8 hybrid pipelines identifying trade-offs between semantic alignment and audio fidelity.</li>
-                            <li>Optimized a cascaded architecture to achieve a peak <strong>CLAP score of 0.35</strong> and <strong>FAD of 6.55</strong>.</li>
+                            <li>Comparative analysis of 8 hybrid architectures identifying trade-offs between semantic alignment and fidelity.</li>
+                            <li>Optimized a cascaded pipeline achieving a peak <strong>CLAP score of 0.35</strong> and <strong>FAD of 6.55</strong>.</li>
                         </ul>
                     </div>
                 </div>
@@ -264,6 +215,23 @@
                     </div>
                 </div>
 
+                <div class="card">
+                    <div class="card-content">
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-xl font-bold mb-2 text-gray-900">Predictive Analytics for MBTA</h3>
+                            <a href="https://github.com/satyagalla/MBTA_Data_Analysis" target="_blank" class="text-gray-400 hover:text-blue-600"><i data-lucide="github" class="w-5 h-5"></i></a>
+                        </div>
+                        <div class="flex flex-wrap mt-2 mb-4">
+                            <span class="tag">XGBoost</span>
+                            <span class="tag">GIS</span>
+                        </div>
+                        <ul class="list-disc list-inside text-gray-600 space-y-2 text-sm">
+                            <li>Aggregated 9 years of multi-modal data to train Reliability (XGBoost) and Ridership (Random Forest) models.</li>
+                            <li>Uncovered a system-wide <strong>33.35% post-pandemic ridership drop</strong> and identified critical service disparities.</li>
+                        </ul>
+                    </div>
+                </div>
+
             </div>
         </section>
 
@@ -278,29 +246,29 @@
                     <h3 class="text-lg font-bold mb-4 text-gray-900">Generative AI</h3>
                     <div class="flex justify-center flex-wrap gap-2">
                         <span class="tag">Llama-3</span>
-                        <span class="tag">Phi-3</span>
-                        <span class="tag">RAG</span>
+                        <span class="tag">Phi-3 (Quantized)</span>
+                        <span class="tag">Agentic AI</span>
                         <span class="tag">LangGraph</span>
-                        <span class="tag">Neuro-Symbolic AI</span>
+                        <span class="tag">RAG</span>
+                        <span class="tag">Neuro-Symbolic</span>
                         <span class="tag">Vector DBs</span>
-                        <span class="tag">Transformers</span>
                     </div>
                 </div>
 
                 <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 text-center">
                     <div class="bg-purple-100 p-3 rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-4 text-purple-600">
-                        <i data-lucide="code-2" class="w-6 h-6"></i>
+                        <i data-lucide="cloud-cog" class="w-6 h-6"></i>
                     </div>
-                    <h3 class="text-lg font-bold mb-4 text-gray-900">Engineering</h3>
+                    <h3 class="text-lg font-bold mb-4 text-gray-900">Cloud & Engineering</h3>
                     <div class="flex justify-center flex-wrap gap-2">
+                        <span class="tag">AWS (EC2/S3)</span>
+                        <span class="tag">Azure</span>
                         <span class="tag">Docker</span>
                         <span class="tag">FastAPI</span>
-                        <span class="tag">AWS (EC2/S3)</span>
-                        <span class="tag">TCP/IPC Sockets</span>
-                        <span class="tag">Git</span>
                         <span class="tag">CI/CD</span>
+                        <span class="tag">TCP/IPC</span>
                         <span class="tag">Linux</span>
-                        <span class="tag">Bash</span>
+                        <span class="tag">Git</span>
                     </div>
                 </div>
 
@@ -317,7 +285,6 @@
                         <span class="tag">NumPy</span>
                         <span class="tag">Scikit-learn</span>
                         <span class="tag">OpenCV</span>
-                        <span class="tag">Regex</span>
                     </div>
                 </div>
 
@@ -329,7 +296,7 @@
             <div class="max-w-4xl mx-auto space-y-8">
                 <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-blue-600">
                     <h3 class="text-lg font-bold text-gray-900">Efficient Graph Formulation and Latent Space Integration for Lunar Hyperspectral Image Classification</h3>
-                    <p class="text-sm text-gray-500 italic mb-3">IEEE WHISPERS 2023 | <a href="#" class="text-blue-600 hover:underline">Link coming soon</a></p>
+                    <p class="text-sm text-gray-500 italic mb-3">IEEE WHISPERS 2023</p>
                     <p class="text-gray-600 text-sm">
                         Proposed a Latent Graph Convolutional Network (GCN) utilizing an Autoencoder for dimensionality reduction, achieving <strong>90.1% accuracy</strong> on Chandrayaan-1 M3 benchmarks.
                     </p>
@@ -369,18 +336,12 @@
     </footer>
 
     <script>
-        // Initialize Lucide icons
         lucide.createIcons();
-
-        // Mobile menu toggle
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
-
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
-
-        // Close mobile menu when a link is clicked
         const mobileMenuLinks = mobileMenu.querySelectorAll('a');
         mobileMenuLinks.forEach(link => {
             link.addEventListener('click', () => {
