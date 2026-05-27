@@ -1,0 +1,31 @@
+---
+import { experiences } from '../data/experience';
+---
+
+<div class="flex flex-col gap-6">
+  {experiences.map(exp => (
+    <div
+      class={`reveal glass-card glow-border p-6 ${exp.highlight ? 'border-l-2' : ''}`}
+      style={exp.highlight ? 'border-left-color: #8b5cf6;' : ''}
+    >
+      <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-3">
+        <div>
+          <h3 class="font-bold" style="color: var(--text-primary);">{exp.title}</h3>
+          <span class="text-sm font-semibold" style="color: var(--accent);">{exp.company}</span>
+          {exp.subtitle && (
+            <p class="text-xs mt-0.5 font-mono" style="color: var(--text-muted);">{exp.subtitle}</p>
+          )}
+        </div>
+        <span class="font-mono text-xs shrink-0" style="color: var(--text-muted);">{exp.date}</span>
+      </div>
+      <ul class="flex flex-col gap-2">
+        {exp.bullets.map(bullet => (
+          <li class="flex items-start gap-2 text-sm" style="color: var(--text-secondary);">
+            <span class="mt-1.5 w-1.5 h-1.5 rounded-full shrink-0" style="background: #8b5cf6;"></span>
+            <span set:html={bullet} />
+          </li>
+        ))}
+      </ul>
+    </div>
+  ))}
+</div>

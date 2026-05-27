@@ -1,0 +1,138 @@
+---
+---
+
+<div id="cmd-palette" class="fixed inset-0 z-[100] hidden" role="dialog" aria-modal="true" aria-label="Command palette">
+  <!-- Backdrop -->
+  <div id="cmd-backdrop" class="absolute inset-0" style="background: rgba(0,0,0,0.6); backdrop-filter: blur(4px);"></div>
+
+  <!-- Modal -->
+  <div class="relative z-10 max-w-lg mx-auto mt-20 px-4">
+    <div class="glass-card overflow-hidden" style="border-color: rgba(139,92,246,0.3);">
+      <!-- Search input -->
+      <div class="flex items-center gap-3 px-4 py-3 border-b" style="border-color: var(--border);">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="shrink-0" style="color: var(--text-muted);">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input
+          id="cmd-input"
+          type="text"
+          placeholder="Type a command…"
+          class="flex-1 bg-transparent outline-none text-sm"
+          style="color: var(--text-primary);"
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <kbd class="text-xs font-mono px-1.5 py-0.5 rounded border" style="color: var(--text-muted); border-color: var(--border);">esc</kbd>
+      </div>
+
+      <!-- Results -->
+      <ul id="cmd-results" class="max-h-72 overflow-y-auto py-2" role="listbox"></ul>
+
+      <!-- Footer hint -->
+      <div class="px-4 py-2 border-t flex items-center gap-4 text-xs font-mono" style="border-color: var(--border); color: var(--text-muted);">
+        <span>↑↓ navigate</span>
+        <span>↵ select</span>
+        <span>esc close</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    const commands = [
+      { label: 'Go to Work', category: 'Navigate', action: () => document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' }) },
+      { label: 'Go to Experience', category: 'Navigate', action: () => document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' }) },
+      { label: 'Go to Skills', category: 'Navigate', action: () => document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' }) },
+      { label: 'Go to Background', category: 'Navigate', action: () => document.getElementById('background')?.scrollIntoView({ behavior: 'smooth' }) },
+      { label: 'Go to Contact', category: 'Navigate', action: () => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }) },
+      { label: 'Download Resume', category: 'Action', action: () => window.open('/Satya_Galla_Resume_13.pdf', '_blank') },
+      { label: 'Open GitHub', category: 'Link', action: () => window.open('https://github.com/satyagalla', '_blank') },
+      { label: 'Open LinkedIn', category: 'Link', action: () => window.open('https://linkedin.com/in/satya-galla', '_blank') },
+      { label: 'Open Google Scholar', category: 'Link', action: () => window.open('https://scholar.google.com/citations?user=gLqht5wAAAAJ&hl=en', '_blank') },
+      { label: 'Email — copy address', category: 'Action', action: async () => {
+        try { await navigator.clipboard.writeText('akhilg@bu.edu'); }
+        catch { window.location.href = 'mailto:akhilg@bu.edu'; }
+      }},
+      { label: 'Email — open mail client', category: 'Action', action: () => { window.location.href = 'mailto:akhilg@bu.edu'; } },
+      { label: 'Toggle theme', category: 'Preference', action: () => {
+        const current = document.documentElement.getAttribute('data-theme') || 'dark';
+        const next = current === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        const sun = document.getElementById('icon-sun');
+        const moon = document.getElementById('icon-moon');
+        if (sun && moon) {
+          sun.style.display = next === 'dark' ? 'block' : 'none';
+          moon.style.display = next === 'light' ? 'block' : 'none';
+        }
+      }},
+    ];
+
+    let activeIndex = 0;
+    let filtered = [...commands];
+    const palette = document.getElementById('cmd-palette');
+    const input = document.getElementById('cmd-input');
+    const resultsList = document.getElementById('cmd-results');
+    const backdrop = document.getElementById('cmd-backdrop');
+
+    function open() {
+      palette.classList.remove('hidden');
+      input.value = '';
+      filtered = [...commands];
+      activeIndex = 0;
+      renderResults();
+      setTimeout(() => input.focus(), 50);
+    }
+
+    function close() {
+      palette.classList.add('hidden');
+    }
+
+    function renderResults() {
+      resultsList.innerHTML = '';
+      if (filtered.length === 0) {
+        resultsList.innerHTML = '<li class="px-4 py-3 text-sm text-center" style="color: var(--text-muted);">No commands found</li>';
+        return;
+      }
+      filtered.forEach((cmd, i) => {
+        const li = document.createElement('li');
+        li.role = 'option';
+        li.setAttribute('aria-selected', i === activeIndex ? 'true' : 'false');
+        li.className = 'flex items-center justify-between px-4 py-2.5 cursor-pointer transition-colors';
+        li.style.background = i === activeIndex ? 'var(--card-hover)' : 'transparent';
+        li.style.color = 'var(--text-primary)';
+        li.innerHTML = `
+          <span class="text-sm">${cmd.label}</span>
+          <span class="text-xs font-mono" style="color: var(--text-muted);">${cmd.category}</span>
+        `;
+        li.addEventListener('mouseenter', () => { activeIndex = i; renderResults(); });
+        li.addEventListener('click', () => { cmd.action(); close(); });
+        resultsList.appendChild(li);
+      });
+    }
+
+    input?.addEventListener('input', (e) => {
+      const q = e.target.value.toLowerCase();
+      filtered = commands.filter(c => c.label.toLowerCase().includes(q) || c.category.toLowerCase().includes(q));
+      activeIndex = 0;
+      renderResults();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        palette.classList.contains('hidden') ? open() : close();
+      }
+      if (palette.classList.contains('hidden')) return;
+      if (e.key === 'Escape') close();
+      if (e.key === 'ArrowDown') { e.preventDefault(); activeIndex = Math.min(activeIndex + 1, filtered.length - 1); renderResults(); }
+      if (e.key === 'ArrowUp') { e.preventDefault(); activeIndex = Math.max(activeIndex - 1, 0); renderResults(); }
+      if (e.key === 'Enter') { filtered[activeIndex]?.action(); close(); }
+    });
+
+    backdrop?.addEventListener('click', close);
+
+    document.addEventListener('open-command-palette', open);
+  })();
+</script>

@@ -1,0 +1,146 @@
+---
+import Base from '../layouts/Base.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import ProjectGrid from '../components/ProjectGrid.astro';
+import Experience from '../components/Experience.astro';
+import Skills from '../components/Skills.astro';
+import Background from '../components/Background.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+import CommandPalette from '../components/CommandPalette.astro';
+import '../styles/global.css';
+---
+
+<Base>
+  <Navbar />
+  <Hero />
+
+  <main class="max-w-6xl mx-auto px-6">
+    <!-- Work -->
+    <section id="work" class="py-24">
+      <SectionHeader number="01" title="Work" />
+      <ProjectGrid />
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="py-24">
+      <SectionHeader number="02" title="Experience" />
+      <Experience />
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="py-24">
+      <SectionHeader number="03" title="Skills" />
+      <Skills />
+    </section>
+
+    <!-- Background -->
+    <section id="background" class="py-24">
+      <SectionHeader number="04" title="Background" />
+      <Background />
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-24">
+      <SectionHeader number="05" title="Contact" />
+      <Contact />
+    </section>
+  </main>
+
+  <Footer />
+  <CommandPalette />
+</Base>
+
+<script is:inline>
+  // GSAP scroll animations
+  (function () {
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+    gsap.registerPlugin(ScrollTrigger);
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReducedMotion) {
+      document.querySelectorAll('.reveal').forEach(el => {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      });
+      return;
+    }
+
+    gsap.utils.toArray('.reveal').forEach(el => {
+      gsap.fromTo(el,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 88%',
+            toggleActions: 'play none none none',
+          },
+        }
+      );
+    });
+  })();
+
+  // J/K keyboard navigation between sections
+  (function () {
+    const sections = ['hero', 'work', 'experience', 'skills', 'background', 'contact'];
+    let currentIdx = 0;
+
+    function isPaletteOpen() {
+      return !document.getElementById('cmd-palette')?.classList.contains('hidden');
+    }
+
+    function isInputFocused() {
+      const tag = document.activeElement?.tagName;
+      return tag === 'INPUT' || tag === 'TEXTAREA';
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (isPaletteOpen() || isInputFocused()) return;
+      if (e.key === 'j' || e.key === 'J') {
+        currentIdx = Math.min(currentIdx + 1, sections.length - 1);
+        document.getElementById(sections[currentIdx])?.scrollIntoView({ behavior: 'smooth' });
+      }
+      if (e.key === 'k' || e.key === 'K') {
+        currentIdx = Math.max(currentIdx - 1, 0);
+        document.getElementById(sections[currentIdx])?.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+
+    // Update currentIdx based on scroll position
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const idx = sections.indexOf(entry.target.id);
+          if (idx !== -1) currentIdx = idx;
+        }
+      });
+    }, { threshold: 0.3 });
+
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+  })();
+
+  // Cursor glow on glass cards
+  (function () {
+    document.querySelectorAll('.glass-card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(139,92,246,0.08) 0%, var(--card) 60%)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.background = '';
+      });
+    });
+  })();
+</script>

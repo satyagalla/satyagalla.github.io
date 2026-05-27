@@ -1,0 +1,52 @@
+---
+import { publications } from '../data/publications';
+---
+
+<!-- Publications -->
+<div class="flex flex-col gap-6 mb-12">
+  {publications.map(pub => (
+    <div class="reveal glass-card p-6 border-l-2" style="border-left-color: #06b6d4;">
+      <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-2">
+        <h3 class="font-bold leading-snug" style="color: var(--text-primary);">{pub.title}</h3>
+        <span class="font-mono text-xs shrink-0" style="color: var(--text-muted);">{pub.year}</span>
+      </div>
+      <p class="font-mono text-xs mb-2 font-semibold" style="color: var(--accent-2);">{pub.venue}</p>
+      <p class="text-sm" style="color: var(--text-secondary);">{pub.description}</p>
+      {pub.link && (
+        <a
+          href={pub.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-2 inline-flex items-center gap-1 text-xs font-mono transition-colors"
+          style="color: var(--text-muted);"
+        >
+          Read paper ↗
+        </a>
+      )}
+    </div>
+  ))}
+</div>
+
+<!-- Education -->
+<div class="reveal glass-card p-6">
+  <h3 class="font-mono text-xs mb-4 uppercase tracking-widest" style="color: var(--text-muted);">Education</h3>
+  <div class="flex flex-col gap-4">
+    <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1">
+      <div>
+        <p class="font-bold" style="color: var(--text-primary);">M.S. in Artificial Intelligence</p>
+        <p class="text-sm" style="color: var(--accent);">Boston University</p>
+        <p class="text-xs font-mono" style="color: var(--text-muted);">GPA: 3.7 / 4.0</p>
+      </div>
+      <span class="font-mono text-xs" style="color: var(--text-muted);">Jan 2026</span>
+    </div>
+    <div class="h-px" style="background: var(--border);"></div>
+    <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1">
+      <div>
+        <p class="font-bold" style="color: var(--text-primary);">B.Tech. in Computer Science</p>
+        <p class="text-sm" style="color: var(--accent);">IIIT Sri City</p>
+        <p class="text-xs font-mono" style="color: var(--text-muted);">GPA: 3.5 / 4.0</p>
+      </div>
+      <span class="font-mono text-xs" style="color: var(--text-muted);">May 2024</span>
+    </div>
+  </div>
+</div>
