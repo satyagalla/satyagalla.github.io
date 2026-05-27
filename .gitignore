@@ -3,3 +3,6 @@ dist/
 .astro/
 .env
 .env.*
+
+# Readme for github profile page at `https://github.com/satyagalla/satyagalla`
+PROFILE_README.md
