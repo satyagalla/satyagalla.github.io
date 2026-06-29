@@ -76,7 +76,7 @@ const { project, fullWidth = false } = Astro.props;
       class="inline-flex items-center gap-2 px-4 py-2 rounded-md text-sm font-semibold transition-all hover:opacity-90 self-start"
       style="background: linear-gradient(135deg, #8b5cf6, #06b6d4); color: white;"
     >
-      Try it live →
+      {project.demoLabel ?? 'Try it live →'}
     </a>
   )}
 
