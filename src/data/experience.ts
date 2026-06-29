@@ -20,16 +20,6 @@ export const experiences: Experience[] = [
   },
   {
     title: 'Machine Learning Engineer',
-    company: 'ISRO (Indian Space Research Organization)',
-    date: 'Dec 2022 – May 2023',
-    highlight: true,
-    bullets: [
-      'Boosted hyperspectral classification accuracy on the Chandrayaan-1 dataset by <strong>13.5%</strong> compared to CNN baselines by engineering a Graph Convolutional Network (GCN) utilizing Latent Space projections.',
-      'Devised a Spectral-Spatial Non-Linearity graph formulation to handle irregular lunar topography, achieving <strong>91% accuracy</strong> on Chandrayaan-2 data — validated via IEEE WHISPERS 2023 publication.',
-    ],
-  },
-  {
-    title: 'Machine Learning Engineer',
     company: 'Aaizel International Tech',
     date: 'Feb 2024 – May 2024',
     subtitle: 'Internship',
