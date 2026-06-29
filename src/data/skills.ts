@@ -5,15 +5,11 @@ export interface SkillCategory {
 
 export const skills: SkillCategory[] = [
   {
-    name: 'Generative AI & LLMs',
-    items: ['Llama-3', 'Phi-3 (Quantization)', 'RAG Architectures', 'AI Agents (LangGraph)', 'Neuro-Symbolic AI', 'Vector DBs'],
+    name: 'Daily use',
+    items: ['Python', 'TypeScript', 'LangGraph', 'Claude API', 'vLLM', 'RAG Architectures', 'Docker', 'Git', 'Cursor', 'Claude Code'],
   },
   {
-    name: 'Cloud & Engineering',
-    items: ['AWS (EC2/S3)', 'Azure', 'Docker', 'CI/CD', 'FastAPI', 'SQL', 'TCP/IPC Sockets', 'Bash Scripting', 'Linux', 'Git', 'Cursor', 'GitHub Copilot'],
-  },
-  {
-    name: 'Data Science & ML',
-    items: ['XGBoost', 'GCNs', 'Pandas', 'NumPy', 'Scikit-learn', 'OpenCV', 'Regex Parsing'],
+    name: 'Projects & research',
+    items: ['Llama-3', 'Phi-3 (Quantization)', 'AWQ / NF4', 'Modal', 'Pinecone', 'AWS (EC2/S3)', 'Azure', 'FastAPI', 'GCNs', 'PyTorch', 'OpenCV'],
   },
 ];
